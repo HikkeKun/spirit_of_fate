@@ -4,9 +4,7 @@ label spirit_start:
         if "spirit_told_about_character_creation" not in persistent.__dict__:
             persistent.spirit_told_about_character_creation = False
 
-    $ sprit_menu_continue = True
-
-    while sprit_menu_continue:
+    while True:
         menu:
             Spirit "What are you intrested in?"
             "I have questions about Fate Core rules.":
@@ -19,7 +17,7 @@ label spirit_start:
             "Ok, let's create character" if persistent.spirit_told_about_character_creation:
                 call spirit_create_character
             "I'm done. Bye!":
-                $ sprit_menu_continue = False
+                return
     return
 
 label spirit_about_rules:

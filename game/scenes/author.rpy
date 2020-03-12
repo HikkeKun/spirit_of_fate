@@ -4,11 +4,9 @@ label author_start:
         if "author_asked_how_he_can_help" not in persistent.__dict__:
             persistent.author_asked_how_he_can_help = False
 
-    Author "Well, what are you intrested in?"
-
-    $ author_dialog_continue = True
-    while author_dialog_continue:
+    while True:
         menu:
+            Author "Well, what are you intrested in?"
             "Tell me about this project.":
                 Author "Long story short. Mainly, it's a library for using Fate Core rules for conflict resolution between Gamer, his Character and Game world."
                 extend "But Fate Core was desined to be played by humans. So I may brought some from myself."
@@ -27,16 +25,14 @@ label author_start:
                 call author_about_library
 
             "Ok, gotcha. Bye":
-                $ author_dialog_continue = False
-
+                return
     return
 
 label author_about_library:
 
-    $ about_library_continue = True
-    while about_library_continue:
+    while True:
        menu:
            "I have other questions":
-               $ about_library_continue = False
+               return
 
     return

@@ -29,10 +29,9 @@ label start:
 
     Author "I'm the developer of this, so I can tell you something about this project and, or you can talk to Spirit of Fate."
 
-    $ start_menu_continue = True
     $ first_time_start_menu = True
 
-    while start_menu_continue:
+    while True:
         menu:
             "Continue with Author." if first_time_start_menu:
                 call author_start
@@ -41,6 +40,6 @@ label start:
             "Talk to Spirit of Fate":
                 call spirit_start
             "Main Menu":
-                $ start_menu_continue = False
+                return
         $ first_time_start_menu = False
     return
