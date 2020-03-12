@@ -1,7 +1,7 @@
 label author_start:
 
     python:
-        if "author_asked_how_he_can_help" not in persistent:
+        if "author_asked_how_he_can_help" not in persistent.__dict__:
             persistent.author_asked_how_he_can_help = False
 
     Author "Well, what are you intrested in?"
@@ -27,7 +27,7 @@ label author_start:
                 call author_about_library
 
             "Ok, gotcha. Bye":
-                $ author_dialog_continue = false
+                $ author_dialog_continue = False
 
     return
 

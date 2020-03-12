@@ -26,13 +26,21 @@ label start:
     Author "Nice to meet you, i'm Author."
 
     Author "Not asking about you, as i would forget it immediately, sorry."
-    
+
     Author "I'm the developer of this, so I can tell you something about this project and, or you can talk to Spirit of Fate."
 
-    menu:
-        "Continue with Author.":
-            call author_start
-        "Talk to Spirit of Fate":
-            call sprit_start
+    $ start_menu_continue = True
+    $ first_time_start_menu = True
 
+    while start_menu_continue:
+        menu:
+            "Continue with Author." if first_time_start_menu:
+                call author_start
+            "Talk to Author" if not first_time_start_menu:
+                call author_start
+            "Talk to Spirit of Fate":
+                call spirit_start
+            "Main Menu":
+                $ start_menu_continue = False
+        $ first_time_start_menu = False
     return
